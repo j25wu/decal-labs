@@ -1,0 +1,47 @@
+What user are you logged in as by default in the container?
+
+	root
+
+If you start and then exit an interactive container, and then use the docker run -it ubuntu:latest command again; is it the same container? How can you tell?
+
+	it will be in a different containers since the user id is different. 
+
+Run the image you just built with no flags. What do you observe?
+
+	The word "missile" spelt out in yellow text with red background.
+
+Write and build a Dockerfile based on ubuntu:bionic that installs the packages fortune and fortunes-min and runs the fortune executable (located in /usr/games/fortune after you install it). Note that you won’t need to use the -it flags when you run the container as fortune doesn’t need STDIN. Submit your Dockerfile with this lab. Hint: if you’re having trouble writing your Dockerfile, try booting an interactive container and installing both packages. How can you translate what you did interactively to a Dockerfile?
+
+	See directory.
+
+Paste the output of running docker images command after completing questions 1 and 2.
+
+	REPOSITORY    TAG       IMAGE ID       CREATED              SIZE
+	fortune       latest    69753105ca9c   About a minute ago   106MB
+	missile       latest    3adbd7170636   About an hour ago    558MB
+	ubuntu        latest    825d55fb6340   11 days ago          72.8MB
+	ubuntu        bionic    f5cbed4244ba   11 days ago          63.2MB
+	fedora        latest    b97d90f26110   3 weeks ago          153MB
+	hello-world   latest    feb5d9fea6a5   6 months ago         13.3kB
+
+While your three containerized Apache web servers are running in detached mode, paste the output of docker ps.
+
+	CONTAINER ID   IMAGE       COMMAND              CREATED              STATUS              PORTS                                               NAMES
+
+	df94f3a3b6be   httpd:2.4   "httpd-foreground"   About a minute ago   Up About a minute   80/tcp, 0.0.0.0:4002->4002/tcp, :::4002->4002/tcp   my-apache-app3
+	80a11174361a   httpd:2.4   "httpd-foreground"   2 minutes ago        Up 2 minutes        80/tcp, 0.0.0.0:4001->4001/tcp, :::4001->4001/tcp   my-apache-app2
+	f5c8f5ac6f93   httpd:2.4   "httpd-foreground"   7 minutes ago        Up 7 minutes        80/tcp, 0.0.0.0:8080->4000/tcp, :::8080->4000/tcp   my-apache-app1
+
+Observe that in the output of docker ps, each container has an associated container ID. Explain why containers have IDs/Names rather than being named after the image, for example httpd.
+
+	Each container runs as an independent instance on the container. Since each of them are standalone, they are each assigned a unique ID.
+
+Now go ahead and stop your containers. Paste the command you used to stop one of the containers.
+
+	docker stop my-apache-app
+
+
+
+
+
+
